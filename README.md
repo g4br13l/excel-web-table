@@ -5,7 +5,22 @@ This is a web app that has some of the most used functions of Microsoft Excel an
 
 # Features
 
-## Displaying structured data in the table
+### Displaying structured data in the table
+![image](https://github.com/user-attachments/assets/2ee0dc26-63e8-44df-ae1b-d2523d2c46c4)
+
+### Light and Dark modes with Tailwind CSS
+![image](https://github.com/user-attachments/assets/232aa21d-658d-4c9a-ba2e-3aebb751976b)
+
+### Sorting data in each column 
+https://github.com/user-attachments/assets/18c3503d-1e59-405e-a019-baf0aca6360d
+
+### search for words or numbers in the table
+https://github.com/user-attachments/assets/dd3b7019-0609-4f16-a9cc-82263af92842
+
+### Setting decimal places for numbers in the table
+https://github.com/user-attachments/assets/29c459b0-5ccd-49d5-bfee-75d86536b5ee
+
+
 
 
 
