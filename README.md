@@ -1,54 +1,92 @@
-# React + TypeScript + Vite
+# Excel Web Table
+This is a web app that has some of the most used functions of Microsoft Excel and Google Sheets.
+<br /> <br />
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+# Features
+
+## Displaying structured data in the table
+
+
+
+# Technologies
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.<br/>
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Typescript](https://www.typescriptlang.org/)
+- [ReactJS](https://react.dev/)
+- [vite](https://vite.dev/guide/)
+- [Tailwind CSS](https://tailwindcss.com/docs/)
+- [Shadcn UI](https://ui.shadcn.com/docs/)
+  
+<br />
 
-## Expanding the ESLint configuration
+# How to run
+You need to have up-to-date NodeJs installed.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1- Install dependencies
+```
+npm install
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2- Run the app
+```
+npm run dev
+pnpm run dev
+```
+The project will start on port 3000. You can access it through the url: "http://localhost:3000/"
+
+<br />
+
+## Custom ESLint configuration
+The eslint.config.js file has been improved and new libs have been added for a better engineering experience.
 
 ```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+export default tseslint.config(
+  { ignores: ['dist'] },
+  {
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended
+    ],
+    files: [
+      '**/*.{ts,tsx,js,jsx}'
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+      '@stylistic': stylistic,
+      'import-x': importX,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+      '@stylistic/indent': ['warn', 2],
+      '@stylistic/quotes': ['warn', 'single'],
+      '@stylistic/jsx-quotes': ['warn', 'prefer-double'],
+      '@stylistic/semi': ['warn', 'never'],
+      '@stylistic/no-extra-semi': ['error'],
+      '@stylistic/max-len': ['warn', { code: 100, ignoreStrings: true }],
+      'import-x/newline-after-import': ['error', { count: 3 }],
+    },
+  },
+)
+```
+<br/>
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+
+### Run Eslint to fix errors or warnings
+```
+npm run lint:fix
+pnpm run lint:fix
+
 ```
